@@ -8,13 +8,12 @@ export default function Register() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [nivelAcesso, setNivelAcesso] = useState<'COMUM' | 'ADMIN'>('COMUM');
   const [erro, setErro] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await register(nome, email, senha, nivelAcesso);
+      await register(nome, email, senha, 'COMUM');
       navigate('/login');
     } catch (err: any) {
       setErro(err.message);
@@ -37,13 +36,6 @@ export default function Register() {
         <div style={{ marginBottom: 16 }}>
           <label>Senha</label>
           <input type="password" value={senha} onChange={e => setSenha(e.target.value)} required style={{ width: '100%', padding: 8, marginTop: 4, boxSizing: 'border-box' }} />
-        </div>
-        <div style={{ marginBottom: 16 }}>
-          <label>Tipo de conta</label>
-          <select value={nivelAcesso} onChange={e => setNivelAcesso(e.target.value as 'COMUM' | 'ADMIN')} style={{ width: '100%', padding: 8, marginTop: 4, boxSizing: 'border-box' }}>
-            <option value="COMUM">Comum</option>
-            <option value="ADMIN">Administrador</option>
-          </select>
         </div>
         <button type="submit" style={{ width: '100%', padding: 10, background: '#1a1a2e', color: '#fff', border: 'none', cursor: 'pointer' }}>Cadastrar</button>
       </form>

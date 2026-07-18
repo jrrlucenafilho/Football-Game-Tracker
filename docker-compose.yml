@@ -21,6 +21,9 @@ services:
       DATABASE_URL: postgresql://postgres:postgres@db:5432/football_tracker
       JWT_SECRET: super-secret-jwt-key-change-in-production
       PORT: 3001
+      ADMIN_NAME: Administrador
+      ADMIN_EMAIL: admin@admin.com
+      ADMIN_PASSWORD: admin123
     depends_on:
       db:
         condition: service_healthy
