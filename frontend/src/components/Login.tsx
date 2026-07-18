@@ -5,12 +5,12 @@ import { useAuth } from '../contexts/AuthContext';
 export default function Login() {
   const { login, user, loading } = useAuth();
   const navigate = useNavigate();
-
-  if (loading) return null;
-  if (user) return <Navigate to="/" />;
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
+
+  if (loading) return null;
+  if (user) return <Navigate to="/" />;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
