@@ -97,14 +97,14 @@ export default function Jogos() {
                 <label>Time Casa *</label>
                 <select value={time_casa_id} onChange={e => setTimeCasaId(e.target.value)} required style={{ width: '100%', padding: 8, marginTop: 4, boxSizing: 'border-box' }}>
                   <option value="">Selecione</option>
-                  {times.map(t => <option key={t.id} value={t.id}>{t.nome}</option>)}
+                  {times.filter(t => t.id !== Number(time_visitante_id)).map(t => <option key={t.id} value={t.id}>{t.nome}</option>)}
                 </select>
               </div>
               <div>
                 <label>Time Visitante *</label>
                 <select value={time_visitante_id} onChange={e => setTimeVisitanteId(e.target.value)} required style={{ width: '100%', padding: 8, marginTop: 4, boxSizing: 'border-box' }}>
                   <option value="">Selecione</option>
-                  {times.map(t => <option key={t.id} value={t.id}>{t.nome}</option>)}
+                  {times.filter(t => t.id !== Number(time_casa_id)).map(t => <option key={t.id} value={t.id}>{t.nome}</option>)}
                 </select>
               </div>
               <div>

@@ -6,6 +6,7 @@ import authRoutes from './routes/auth';
 import timesRoutes from './routes/times';
 import jogosRoutes from './routes/jogos';
 import classificacaoRoutes from './routes/classificacao';
+import usuariosRoutes from './routes/usuarios';
 
 async function seedAdmin() {
   const existingAdmin = await prisma.usuario.findFirst({
@@ -39,6 +40,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/times', timesRoutes);
 app.use('/api/jogos', jogosRoutes);
 app.use('/api/classificacao', classificacaoRoutes);
+app.use('/api/usuarios', usuariosRoutes);
 
 app.listen(PORT, async () => {
   console.log(`Servidor rodando na porta ${PORT}`);

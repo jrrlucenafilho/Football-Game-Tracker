@@ -78,6 +78,22 @@ export const api = {
     delete: (id: number) =>
       request<void>(`/jogos/${id}`, { method: 'DELETE' }),
   },
+  usuarios: {
+    list: () => request<any[]>('/usuarios'),
+    get: (id: number) => request<any>(`/usuarios/${id}`),
+    create: (data: { nome: string; email: string; senha: string; nivel_acesso?: string }) =>
+      request<any>('/usuarios', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }),
+    update: (id: number, data: { nome?: string; email?: string; senha?: string; nivel_acesso?: string }) =>
+      request<any>(`/usuarios/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+      }),
+    delete: (id: number) =>
+      request<void>(`/usuarios/${id}`, { method: 'DELETE' }),
+  },
   classificacao: {
     get: () => request<any[]>('/classificacao'),
   },

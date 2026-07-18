@@ -15,6 +15,7 @@ interface AuthContextType {
   register: (nome: string, email: string, senha: string, nivel_acesso?: string) => Promise<void>;
   logout: () => void;
   isAdmin: boolean;
+  loading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>(null!);
@@ -22,12 +23,14 @@ const AuthContext = createContext<AuthContextType>(null!);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<Usuario | null>(null);
   const [token, setToken] = useState<string | null>(localStorage.getItem('token'));
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+    setLoading(false);
   }, []);
 
   const login = async (email: string, senha: string) => {
@@ -58,6 +61,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         register,
         logout,
         isAdmin: user?.nivel_acesso === 'ADMIN',
+        loading,
       }}
     >
       {children}

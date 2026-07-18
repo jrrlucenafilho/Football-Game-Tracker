@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Times from './components/Times';
 import Jogos from './components/Jogos';
 import Classificacao from './components/Classificacao';
+import Usuarios from './components/Usuarios';
 
 function NavBar() {
   const { user, logout, isAdmin } = useAuth();
@@ -20,6 +21,7 @@ function NavBar() {
         <>
           <Link to="/times" style={{ color: '#ccc', textDecoration: 'none' }}>Times</Link>
           <Link to="/jogos" style={{ color: '#ccc', textDecoration: 'none' }}>Jogos</Link>
+          <Link to="/usuarios" style={{ color: '#ccc', textDecoration: 'none' }}>Usuários</Link>
         </>
       )}
       <div style={{ marginLeft: 'auto', display: 'flex', gap: 12, alignItems: 'center' }}>
@@ -31,7 +33,8 @@ function NavBar() {
 }
 
 function ProtectedRoute({ children, adminOnly = false }: { children: JSX.Element; adminOnly?: boolean }) {
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, loading } = useAuth();
+  if (loading) return null;
   if (!user) return <Navigate to="/login" />;
   if (adminOnly && !isAdmin) return <Navigate to="/" />;
   return children;
@@ -50,6 +53,7 @@ export default function App() {
             <Route path="/classificacao" element={<Classificacao />} />
             <Route path="/times" element={<ProtectedRoute adminOnly><Times /></ProtectedRoute>} />
             <Route path="/jogos" element={<ProtectedRoute adminOnly><Jogos /></ProtectedRoute>} />
+            <Route path="/usuarios" element={<ProtectedRoute adminOnly><Usuarios /></ProtectedRoute>} />
           </Routes>
         </div>
       </div>
