@@ -42,9 +42,11 @@ app.use('/api/jogos', jogosRoutes);
 app.use('/api/classificacao', classificacaoRoutes);
 app.use('/api/usuarios', usuariosRoutes);
 
-app.listen(PORT, async () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
-  await seedAdmin();
-});
+if (!process.env.VITEST) {
+  app.listen(PORT, async () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+    await seedAdmin();
+  });
+}
 
 export default app;
