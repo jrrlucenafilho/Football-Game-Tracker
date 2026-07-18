@@ -21,9 +21,9 @@ export default function Classificacao() {
             <th style={{ padding: 12, textAlign: 'center' }}>V</th>
             <th style={{ padding: 12, textAlign: 'center' }}>E</th>
             <th style={{ padding: 12, textAlign: 'center' }}>D</th>
-            <th style={{ padding: 12, textAlign: 'center' }}>GP</th>
-            <th style={{ padding: 12, textAlign: 'center' }}>GC</th>
-            <th style={{ padding: 12, textAlign: 'center' }}>SG</th>
+            <th style={{ padding: 12, textAlign: 'center' }}>Gols Pró</th>
+            <th style={{ padding: 12, textAlign: 'center' }}>Gols Contra</th>
+            <th style={{ padding: 12, textAlign: 'center' }}>Saldo de Gols</th>
           </tr>
         </thead>
         <tbody>
