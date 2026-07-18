@@ -37,7 +37,14 @@ Atividade 4/
 3. **Precisão** - `calcularPontos()`: 3 vitória, 1 empate, 0 derrota; classificação recalcula a cada requisição
 4. **Integridade** - Bloqueio via Prisma (erro P2003) e validação manual antes de deletar time
 
-**Para executar:**
+**Para executar (Docker — recomendado):**
+```bash
+docker compose up --build
+```
+
+O backend roda migrations automaticamente. O frontend fica em `http://localhost` (porta 80).
+
+**Para executar (desenvolvimento manual):**
 ```bash
 # Backend
 cd backend
