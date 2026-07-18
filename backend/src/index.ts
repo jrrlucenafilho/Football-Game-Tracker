@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 import bcrypt from 'bcryptjs';
 import prisma from './lib/prisma';
+import { swaggerDocument } from './swagger';
 import authRoutes from './routes/auth';
 import timesRoutes from './routes/times';
 import jogosRoutes from './routes/jogos';
@@ -35,6 +37,8 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/times', timesRoutes);
